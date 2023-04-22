@@ -51,6 +51,14 @@ class _ScreenHomeState extends State<ScreenHome> {
     request.open('POST', 'http://127.0.0.1:5000/upload');
     request.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
 
+    request.onLoadEnd.listen((event) {
+    if (request.status == 200) {
+      print(request.response);
+    } else {
+      print('Failed to send image.');
+    }
+  });
+
     request.send(jsonEncode({
       'image': base64Image,
     }));
