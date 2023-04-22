@@ -1,5 +1,8 @@
+import 'dart:convert';
+import 'dart:html';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:sign_language_detection_webapp_flutter/widgets/DisplayCaptured.dart';
 
 class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
@@ -11,6 +14,7 @@ class ScreenHome extends StatefulWidget {
 class _ScreenHomeState extends State<ScreenHome> {
   List<CameraDescription>? cameras;
   CameraController? controller;
+  XFile? image;
 
   @override
   void initState() {
@@ -37,6 +41,45 @@ class _ScreenHomeState extends State<ScreenHome> {
 
   @override
   Widget build(BuildContext context) {
+
+    void sendPicture(XFile picture) async {
+    final bytes = await picture.readAsBytes();
+
+    final base64Image = base64Encode(bytes);
+
+    final request = HttpRequest();
+    request.open('POST', 'http://127.0.0.1:5000/upload');
+    request.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
+
+    request.send(jsonEncode({
+      'image': base64Image,
+    }));
+
+    await request.onLoadEnd.first;
+  }
+
+
+    Future<void> captureImage() async {
+      try {
+        if (controller != null) {
+          if (controller!.value.isInitialized) {
+            for (int i = 0; i < 30; i++) {
+              await controller!.takePicture().then((value) {
+                sendPicture(value);
+                image = value;
+              });
+              await Future.delayed(const Duration(milliseconds: 20));
+              setState(() {
+                //update UI
+              });
+            }
+          }
+        }
+      } catch (e) {
+        print(e); //show error
+      }
+    }
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -74,6 +117,11 @@ class _ScreenHomeState extends State<ScreenHome> {
                             child: CircularProgressIndicator(),
                           )
                         : CameraPreview(controller!)),
+            ElevatedButton.icon(
+                onPressed: captureImage,
+                icon: Icon(Icons.camera),
+                label: Text("Capture")),
+            DisplayCaptured(image: image)
           ],
         ),
       ),
