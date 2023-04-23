@@ -1,8 +1,5 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ScreenHome extends StatefulWidget {
@@ -37,8 +34,8 @@ class _ScreenHomeState extends State<ScreenHome> {
                 sigmaY: 2,
               ),
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.6,
-                height: MediaQuery.of(context).size.height * 0.8,
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.9,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     gradient: LinearGradient(
@@ -46,48 +43,58 @@ class _ScreenHomeState extends State<ScreenHome> {
                         end: Alignment.bottomRight,
                         colors: [
                           Color(0xE3000000),
-                          Color(0x8506087A),
+                          Color.fromARGB(133, 0, 188, 221),
                         ])),
                 child: Column(children: [
-                  Row(
-                    children: [
-                      Text("Menu Item"),
-
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(onPressed: () {}, child: const Text("Menu Item")),
+                        TextButton(onPressed: () {}, child: const Text("Menu Item")),
+                        TextButton(onPressed: () {}, child: const Text("Menu Item")),
+                      ],
+                    ),
                   ),
                   Expanded(
                     child: Row(
                       children: [
                         Container(
-                          child: Column(
-                            children: [
-                              Text(
-                                  "Dynamic Sign Language Detection\n Using Skeletal Point Recogniton"),
-                              Text(
-                                  " sdlfjalksd d fas;dlf jas;ldasf asdifa;spdfj a;sdkfj pasd flsjd l;adjhsajsjfladf dsfh"),
-                              Spacer(),
-                              ElevatedButton(
-                                  onPressed: () {}, child: Text("Get Started")),
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    maxRadius: 5,
-                                  ),
-                                  CircleAvatar(
-                                    maxRadius: 5,
-                                  ),
-                                  CircleAvatar(
-                                    maxRadius: 5,
-                                  ),
-                                ],
-                              )
-                            ],
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                    "Dynamic Sign Language Detection",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 42.0,
+                                      color: Colors.white,
+                                    ),),
+                                SizedBox(height: MediaQuery.of(context).size.width*0.01,),
+                                Text(
+                                    "The project aims to build a model that converts Indian Sign Language into corresponding words. We have used a skeletal-point feature extraction framework to identify hand landmarks from sequences containing distinct signs and use these landmarks to build a model for recognizing hand gestures using various Long Short-Term Memory (LSTM) Networks. This approach can produce an accurate result compared to the traditional approach. The user will be monitored  and using the machine learning techniques discussed above, which will perform the real-time translation to display the final result",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15.0,
+                                      color: Color.fromARGB(185, 255, 255, 255),
+                                    ),),
+                                Spacer(),
+                                ElevatedButton(
+                                    onPressed: () {}, child: Text("Get Started")),
+                              ],
+                            ),
                           ),
                         ),
                         Expanded(
                             child: Container(
-                          child: SvgPicture.asset("assets/home.svg",
-                          s),
+                          child: SvgPicture.asset(
+                            "assets/home.svg",
+                            width: MediaQuery.of(context).size.width * 0.4,
+                          ),
                         ))
                       ],
                     ),
