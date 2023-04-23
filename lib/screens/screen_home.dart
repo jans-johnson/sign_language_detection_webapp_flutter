@@ -1,8 +1,9 @@
-import 'dart:convert';
-import 'dart:html';
-import 'package:camera/camera.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:sign_language_detection_webapp_flutter/widgets/DisplayCaptured.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
@@ -12,126 +13,100 @@ class ScreenHome extends StatefulWidget {
 }
 
 class _ScreenHomeState extends State<ScreenHome> {
-  List<CameraDescription>? cameras;
-  CameraController? controller;
-  XFile? image;
-
-  @override
-  void initState() {
-    loadCamera();
-    super.initState();
-  }
-
-  Future<void> loadCamera() async {
-    await availableCameras().then((value) {
-      setState(() {
-        cameras = value;
-      });
-    });
-    if (cameras != null) {
-      controller = CameraController(cameras![0], ResolutionPreset.max);
-      controller!.initialize().then((_) {
-        if (!mounted) {
-          return;
-        }
-        setState(() {});
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-
-    void sendPicture(XFile picture) async {
-    final bytes = await picture.readAsBytes();
-
-    final base64Image = base64Encode(bytes);
-
-    final request = HttpRequest();
-    request.open('POST', 'http://127.0.0.1:5000/upload');
-    request.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
-
-    request.onLoadEnd.listen((event) {
-    if (request.status == 200) {
-      print(request.response);
-    } else {
-      print('Failed to send image.');
-    }
-  });
-
-    request.send(jsonEncode({
-      'image': base64Image,
-    }));
-
-    await request.onLoadEnd.first;
-  }
-
-
-    Future<void> captureImage() async {
-      try {
-        if (controller != null) {
-          if (controller!.value.isInitialized) {
-            for (int i = 0; i < 30; i++) {
-              await controller!.takePicture().then((value) {
-                sendPicture(value);
-                image = value;
-              });
-              await Future.delayed(const Duration(milliseconds: 20));
-              setState(() {
-                //update UI
-              });
-            }
-          }
-        }
-      } catch (e) {
-        print(e); //show error
-      }
-    }
-
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            DropdownButton(
-                value: controller?.description,
-                hint: Text("Select Camera"),
-                items: cameras != null
-                    ? cameras!.map((e) {
-                        return DropdownMenuItem(
-                          child: Text(e.name),
-                          value: e,
-                        );
-                      }).toList()
-                    : List.empty(),
-                onChanged: (val) {
-                  setState(() {
-                    controller = CameraController(
-                        val as CameraDescription, ResolutionPreset.max);
-                  });
-                  controller!.initialize().then((_) {
-                    if (!mounted) {
-                      return;
-                    }
-                    setState(() {});
-                  });
-                }),
-            SizedBox(
-                height: 300,
-                width: 400,
-                child: controller == null
-                    ? const Center(child: Text("Loading Camera..."))
-                    : !controller!.value.isInitialized
-                        ? Center(
-                            child: CircularProgressIndicator(),
-                          )
-                        : CameraPreview(controller!)),
-            ElevatedButton.icon(
-                onPressed: captureImage,
-                icon: Icon(Icons.camera),
-                label: Text("Capture")),
-            DisplayCaptured(image: image)
-          ],
-        ),
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                  Colors.black,
+                  Colors.deepPurple,
+                  Colors.purple,
+                  Colors.blue,
+                ])),
+          ),
+          Center(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: 2,
+                sigmaY: 2,
+              ),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.6,
+                height: MediaQuery.of(context).size.height * 0.8,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Color(0xE3000000),
+                          Color(0x8506087A),
+                        ])),
+                child: Column(children: [
+                  Row(
+                    children: [
+                      Text("Menu Item"),
+
+                    ],
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Container(
+                          child: Column(
+                            children: [
+                              Text(
+                                  "Dynamic Sign Language Detection\n Using Skeletal Point Recogniton"),
+                              Text(
+                                  " sdlfjalksd d fas;dlf jas;ldasf asdifa;spdfj a;sdkfj pasd flsjd l;adjhsajsjfladf dsfh"),
+                              Spacer(),
+                              ElevatedButton(
+                                  onPressed: () {}, child: Text("Get Started")),
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    maxRadius: 5,
+                                  ),
+                                  CircleAvatar(
+                                    maxRadius: 5,
+                                  ),
+                                  CircleAvatar(
+                                    maxRadius: 5,
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                            child: Container(
+                          child: SvgPicture.asset("assets/home.svg",
+                          s),
+                        ))
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(onPressed: () {}, icon: Icon(Icons.facebook)),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.youtube_searched_for)),
+                      IconButton(onPressed: () {}, icon: Icon(Icons.home)),
+                    ],
+                  )
+                ]),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
