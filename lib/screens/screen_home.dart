@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'dart:js' as js;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
@@ -74,11 +75,13 @@ class _ScreenHomeState extends State<ScreenHome> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
+                                SizedBox(height: MediaQuery.of(context).size.width * 0.01,),
                                 Text(
                                   "Dynamic Sign Language Detection",
                                   style: TextStyle(
+                                    fontFamily: GoogleFonts.roboto().fontFamily,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 42.0,
+                                    fontSize: 92.0,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -89,9 +92,10 @@ class _ScreenHomeState extends State<ScreenHome> {
                                 Text(
                                   "The project aims to build a model that converts Indian Sign Language into corresponding words. We have used a skeletal-point feature extraction framework to identify hand landmarks from sequences containing distinct signs and use these landmarks to build a model for recognizing hand gestures using various Long Short-Term Memory (LSTM) Networks. This approach can produce an accurate result compared to the traditional approach. The user will be monitored  and using the machine learning techniques discussed above, which will perform the real-time translation to display the final result",
                                   style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 17.0,
+                                    fontSize: 15.0,
                                     color: Color.fromARGB(185, 255, 255, 255),
+                                    letterSpacing: 1.0,
+                                    height: 2.0,
                                   ),
                                 ),
                                 Spacer(),
