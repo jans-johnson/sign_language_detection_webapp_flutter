@@ -3,6 +3,10 @@ import 'dart:js' as js;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sign_language_detection_webapp_flutter/theme/theme_config.dart';
+import 'package:sign_language_detection_webapp_flutter/widgets/neon_button.dart';
+
+import '../utils/consts.dart';
 
 class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
@@ -23,10 +27,10 @@ class _ScreenHomeState extends State<ScreenHome> {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                  Colors.black,
-                  Colors.deepPurple,
-                  Colors.purple,
-                  Colors.blue,
+                  Theme.of(context).colorScheme.primary,
+                  Theme.of(context).colorScheme.onPrimary,
+                  Theme.of(context).colorScheme.secondary,
+                  Theme.of(context).colorScheme.onSecondary,
                 ])),
           ),
           Center(
@@ -55,8 +59,10 @@ class _ScreenHomeState extends State<ScreenHome> {
                       children: [
                         TextButton(
                             onPressed: () {
-                              js.context.callMethod('open', ['https://github.com/jans-johnson']);
-                            }, child: const Text("Github")),
+                              js.context.callMethod(
+                                  'open', ['https://github.com/jans-johnson']);
+                            },
+                            child: const Text("Github")),
                         TextButton(
                             onPressed: () {}, child: const Text("Menu Item")),
                         TextButton(
@@ -75,13 +81,18 @@ class _ScreenHomeState extends State<ScreenHome> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                SizedBox(height: MediaQuery.of(context).size.width * 0.01,),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.01,
+                                ),
                                 Text(
                                   "Dynamic Sign Language Detection",
                                   style: TextStyle(
                                     fontFamily: GoogleFonts.roboto().fontFamily,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 92.0,
+                                    fontSize:
+                                        MediaQuery.of(context).textScaleFactor *
+                                            60,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -90,24 +101,17 @@ class _ScreenHomeState extends State<ScreenHome> {
                                       MediaQuery.of(context).size.width * 0.01,
                                 ),
                                 Text(
-                                  "The project aims to build a model that converts Indian Sign Language into corresponding words. We have used a skeletal-point feature extraction framework to identify hand landmarks from sequences containing distinct signs and use these landmarks to build a model for recognizing hand gestures using various Long Short-Term Memory (LSTM) Networks. This approach can produce an accurate result compared to the traditional approach. The user will be monitored  and using the machine learning techniques discussed above, which will perform the real-time translation to display the final result",
+                                  Constants.main_page_desc,
                                   style: TextStyle(
-                                    fontSize: 15.0,
+                                    fontSize:
+                                        MediaQuery.of(context).textScaleFactor *
+                                            10,
                                     color: Color.fromARGB(185, 255, 255, 255),
                                     letterSpacing: 1.0,
-                                    height: 2.0,
+                                    height: 1.5,
                                   ),
                                 ),
                                 Spacer(),
-                                ElevatedButton(
-                                    onPressed: () {},
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text("Get Started",
-                                      style: TextStyle(
-                                        fontSize: 25,
-                                      ),),
-                                    )),
                               ],
                             ),
                           ),
@@ -122,6 +126,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                       ],
                     ),
                   ),
+                  NeonButton(label: "Get Started", onPressed: (){}),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [

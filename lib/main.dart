@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sign_language_detection_webapp_flutter/screens/screen_home.dart';
+import 'package:sign_language_detection_webapp_flutter/theme/theme_config.dart';
 
 Future<void> main() async {
   runApp(MyApp());
@@ -11,10 +11,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       home: ScreenHome(),
-      theme: ThemeData(
-        fontFamily: GoogleFonts.montserrat().fontFamily,
-        primaryColor: Colors.blue,
-      ),
+      theme: ThemeConfig.darkTheme,
       debugShowCheckedModeBanner: false,
     );
   }
