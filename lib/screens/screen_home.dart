@@ -7,6 +7,7 @@ import 'package:sign_language_detection_webapp_flutter/theme/theme_config.dart';
 import 'package:sign_language_detection_webapp_flutter/widgets/neon_button.dart';
 
 import '../utils/consts.dart';
+import '../widgets/typing_text.dart';
 
 class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
@@ -80,22 +81,13 @@ class _ScreenHomeState extends State<ScreenHome> {
                                 left: MediaQuery.of(context).size.width * 0.05),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 SizedBox(
                                   height:
                                       MediaQuery.of(context).size.width * 0.01,
                                 ),
-                                Text(
-                                  "Dynamic Sign Language Detection",
-                                  style: TextStyle(
-                                    fontFamily: GoogleFonts.roboto().fontFamily,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize:
-                                        MediaQuery.of(context).textScaleFactor *
-                                            60,
-                                    color: Colors.white,
-                                  ),
-                                ),
+                                TypingTextWidget(text: "Dynamic Sign Language Recogniton"),
                                 SizedBox(
                                   height:
                                       MediaQuery.of(context).size.width * 0.01,
