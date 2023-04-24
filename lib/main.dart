@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       home: ScreenHome(),
       theme: ThemeData(
-        fontFamily: GoogleFonts.lato().fontFamily,
+        fontFamily: GoogleFonts.montserrat().fontFamily,
         primaryColor: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
