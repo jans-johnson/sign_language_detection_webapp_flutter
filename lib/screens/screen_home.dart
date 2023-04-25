@@ -1,9 +1,9 @@
 import 'dart:ui';
-import 'dart:js' as js;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sign_language_detection_webapp_flutter/theme/theme_config.dart';
+import 'package:sign_language_detection_webapp_flutter/widgets/appbar.dart';
 import 'package:sign_language_detection_webapp_flutter/widgets/neon_button.dart';
 
 import '../utils/consts.dart';
@@ -41,8 +41,8 @@ class _ScreenHomeState extends State<ScreenHome> {
                 sigmaY: 2,
               ),
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * 0.9,
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height * 0.95,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     gradient: LinearGradient(
@@ -53,24 +53,9 @@ class _ScreenHomeState extends State<ScreenHome> {
                           Color.fromARGB(133, 0, 188, 221),
                         ])),
                 child: Column(children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        TextButton(
-                            onPressed: () {
-                              js.context.callMethod(
-                                  'open', ['https://github.com/jans-johnson']);
-                            },
-                            child: const Text("Github")),
-                        TextButton(
-                            onPressed: () {}, child: const Text("Menu Item")),
-                        TextButton(
-                            onPressed: () {}, child: const Text("Menu Item")),
-                      ],
-                    ),
-                  ),
+                  WebAppBar(),
+
+                  SizedBox(height: MediaQuery.of(context).size.height*0.05,),
                   Expanded(
                     child: Row(
                       children: [
@@ -81,28 +66,37 @@ class _ScreenHomeState extends State<ScreenHome> {
                                 left: MediaQuery.of(context).size.width * 0.05),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
                                   height:
                                       MediaQuery.of(context).size.width * 0.01,
                                 ),
-                                TypingTextWidget(text: "Dynamic Sign Language Recogniton"),
+                                Flexible(
+                                  fit: FlexFit.tight,
+                                  flex: 4,
+                                  child: Text(
+                                    "Dynamic Sign Language Recogniton",
+                                    style: TextStyle(
+                                      fontFamily:
+                                          GoogleFonts.roboto().fontFamily,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: MediaQuery.of(context)
+                                              .textScaleFactor *
+                                          60,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
                                 SizedBox(
                                   height:
                                       MediaQuery.of(context).size.width * 0.01,
                                 ),
-                                Text(
-                                  Constants.main_page_desc,
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).textScaleFactor *
-                                            10,
-                                    color: Color.fromARGB(185, 255, 255, 255),
-                                    letterSpacing: 1.0,
-                                    height: 1.5,
-                                  ),
-                                ),
+                                Flexible(
+                                    fit: FlexFit.loose,
+                                    flex: 3,
+                                    child: TypingTextWidget(
+                                        text: Constants.main_page_desc)),
                                 Spacer(),
                               ],
                             ),
@@ -112,22 +106,15 @@ class _ScreenHomeState extends State<ScreenHome> {
                             child: Container(
                           child: SvgPicture.asset(
                             "assets/home.svg",
-                            width: MediaQuery.of(context).size.width * 0.55,
+                            width: MediaQuery.of(context).size.width * 0.50,
                           ),
                         ))
                       ],
                     ),
                   ),
-                  NeonButton(label: "Get Started", onPressed: (){}),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(onPressed: () {}, icon: Icon(Icons.facebook)),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.youtube_searched_for)),
-                      IconButton(onPressed: () {}, icon: Icon(Icons.home)),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: NeonButton(label: "Get Started", onPressed: () {}),
                   )
                 ]),
               ),

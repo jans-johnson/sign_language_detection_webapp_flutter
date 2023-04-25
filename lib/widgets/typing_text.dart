@@ -17,10 +17,10 @@ class TypingTextWidget extends StatelessWidget {
           TypewriterAnimatedText(
             text,
             textStyle: TextStyle(
-              fontFamily: GoogleFonts.roboto().fontFamily,
-              fontWeight: FontWeight.bold,
-              fontSize: MediaQuery.of(context).textScaleFactor * 60,
-              color: Colors.white,
+              fontSize: MediaQuery.of(context).textScaleFactor * 20,
+              color: Color.fromARGB(185, 255, 255, 255),
+              letterSpacing: 1.0,
+              height: 1.5,
             ),
             speed: Duration(milliseconds: 100),
           ),
