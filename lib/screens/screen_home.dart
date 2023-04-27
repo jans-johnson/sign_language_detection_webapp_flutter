@@ -28,10 +28,10 @@ class _ScreenHomeState extends State<ScreenHome> {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                  Theme.of(context).colorScheme.primary,
-                  Theme.of(context).colorScheme.onPrimary,
-                  Theme.of(context).colorScheme.secondary,
                   Theme.of(context).colorScheme.onSecondary,
+                  Theme.of(context).colorScheme.secondary,
+                  Theme.of(context).colorScheme.onPrimary,
+                  Theme.of(context).colorScheme.primary,
                 ])),
           ),
           Center(
@@ -54,8 +54,9 @@ class _ScreenHomeState extends State<ScreenHome> {
                         ])),
                 child: Column(children: [
                   WebAppBar(),
-
-                  SizedBox(height: MediaQuery.of(context).size.height*0.05,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                  ),
                   Expanded(
                     child: Row(
                       children: [
@@ -103,12 +104,14 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ),
                         ),
                         Expanded(
-                            child: Container(
-                          child: SvgPicture.asset(
-                            "assets/home.svg",
-                            width: MediaQuery.of(context).size.width * 0.50,
+                          child: Container(
+                            child: 
+                            SvgPicture.asset(
+                              "assets/home.svg",
+                              width: MediaQuery.of(context).size.width * 0.50,
+                            ),
                           ),
-                        ))
+                        )
                       ],
                     ),
                   ),

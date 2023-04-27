@@ -13,7 +13,7 @@ class ThemeConfig {
   static ThemeData darkTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.blue,
-      primary: darkPrimary,
+      primary: lightPrimary,
       onPrimary: darkAccent,
       secondary: darkSecondaryAccent,
       onSecondary: lightAccent,

@@ -85,7 +85,7 @@ class _NeonButtonState extends State<NeonButton> with TickerProviderStateMixin {
               child: Text(
                 widget.label,
                 style: TextStyle(
-                  color: _hovering ? Colors.black : Colors.blue,
+                  color: _hovering ? Colors.black : Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                   letterSpacing: 2,
