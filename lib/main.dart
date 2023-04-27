@@ -8,13 +8,21 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ScreenAbout(),
+      home: ScreenHome(),
       theme: ThemeConfig.darkTheme,
       debugShowCheckedModeBanner: false,
+      routes: {
+        'ScreenDetect': (ctx) {
+          return ScreenDetect();
+        },
+        'ScreenAbout': (ctx) {
+          return ScreenAbout();
+        }
+      },
     );
   }
 }

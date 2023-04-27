@@ -105,8 +105,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                         ),
                         Expanded(
                           child: Container(
-                            child: 
-                            SvgPicture.asset(
+                            child: SvgPicture.asset(
                               "assets/home.svg",
                               width: MediaQuery.of(context).size.width * 0.50,
                             ),
@@ -117,7 +116,11 @@ class _ScreenHomeState extends State<ScreenHome> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20),
-                    child: NeonButton(label: "Get Started", onPressed: () {}),
+                    child: NeonButton(
+                        label: "Get Started",
+                        onPressed: () {
+                          Navigator.of(context).pushNamed("ScreenDetect");
+                        }),
                   )
                 ]),
               ),
