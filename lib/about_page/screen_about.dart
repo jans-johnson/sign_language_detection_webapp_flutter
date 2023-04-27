@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sign_language_detection_webapp_flutter/about_page/tech_used.dart';
+import 'package:sign_language_detection_webapp_flutter/theme/theme_config.dart';
 import 'package:sign_language_detection_webapp_flutter/utils/consts.dart';
 import 'package:sign_language_detection_webapp_flutter/widgets/appbar.dart';
 import 'dart:js' as js;
@@ -23,6 +25,7 @@ class _ScreenAboutState extends State<ScreenAbout> {
               Text(
                 "About",
                 style: TextStyle(
+                    color: ThemeConfig.lightPrimary,
                     fontSize: MediaQuery.of(context).textScaleFactor * 60),
               ),
               SizedBox(
@@ -34,6 +37,7 @@ class _ScreenAboutState extends State<ScreenAbout> {
                   Constants.about,
                   overflow: TextOverflow.clip,
                   style: TextStyle(
+                      color: ThemeConfig.lightPrimary,
                       fontSize: MediaQuery.of(context).textScaleFactor * 15,
                       height: MediaQuery.of(context).textScaleFactor * 1.5,
                       wordSpacing: MediaQuery.of(context).textScaleFactor * 2),
@@ -42,9 +46,11 @@ class _ScreenAboutState extends State<ScreenAbout> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
+              TechnologyUsed(),
               Text(
                 "Meet the Team",
                 style: TextStyle(
+                    color: ThemeConfig.lightPrimary,
                     fontSize: MediaQuery.of(context).textScaleFactor * 50),
               ),
               SizedBox(
@@ -84,51 +90,56 @@ class _ScreenAboutState extends State<ScreenAbout> {
 
   Card _buildCard(String imageUrl, String name, String git, String linkedin) {
     return Card(
-      elevation: 20,
-      shadowColor: Colors.black,
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Center(
-              child: CircleAvatar(
-                radius: MediaQuery.of(context).size.width * 0.04,
-                backgroundImage: NetworkImage(imageUrl),
-                backgroundColor: Colors.transparent,
-              ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.02,
-            ),
-            FittedBox(
-              fit: BoxFit.fitWidth,
-              child: Text(name,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: MediaQuery.of(context).textScaleFactor * 20)),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.02,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    js.context.callMethod('open', [git]);
-                  },
-                  icon: const Icon(SimpleIcons.github),
+      elevation: 15,
+      shadowColor: Colors.white,
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.12,
+          padding: EdgeInsets.all(20),
+          color: ThemeConfig.darkPrimary,
+          child: Column(
+            children: [
+              Center(
+                child: CircleAvatar(
+                  radius: MediaQuery.of(context).size.width * 0.04,
+                  backgroundImage: NetworkImage(imageUrl),
+                  backgroundColor: Colors.transparent,
                 ),
-                IconButton(
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Text(name,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: ThemeConfig.lightPrimary,
+                        fontSize: MediaQuery.of(context).textScaleFactor * 20)),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
                     onPressed: () {
-                      js.context.callMethod('open', [linkedin]);
+                      js.context.callMethod('open', [git]);
                     },
-                    icon: Icon(SimpleIcons.linkedin))
-              ],
-            )
-          ],
+                    icon: const Icon(SimpleIcons.github,
+                    color: Colors.white),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        js.context.callMethod('open', [linkedin]);
+                      },
+                      icon: Icon(SimpleIcons.linkedin,
+                      color: Colors.white))
+                ],
+              )
+            ],
+          ),
         ),
-      ),
     );
   }
 }
