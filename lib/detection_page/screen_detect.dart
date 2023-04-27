@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'dart:html';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:sign_language_detection_webapp_flutter/widgets/DisplayCaptured.dart';
+import 'package:sign_language_detection_webapp_flutter/detection_page/DisplayCaptured.dart';
+import 'package:sign_language_detection_webapp_flutter/theme/theme_config.dart';
 
 class ScreenDetect extends StatefulWidget {
   const ScreenDetect({super.key});
@@ -89,6 +90,7 @@ class _ScreenDetectState extends State<ScreenDetect> {
     }
 
     return Scaffold(
+      backgroundColor: ThemeConfig.darkPrimary,
       body: Center(
         child: Column(
           children: [
@@ -98,7 +100,9 @@ class _ScreenDetectState extends State<ScreenDetect> {
                 items: cameras != null
                     ? cameras!.map((e) {
                         return DropdownMenuItem(
-                          child: Text(e.name),
+                          child: Text(e.name,style: TextStyle(
+                            color: Color.fromARGB(255, 75, 75, 75),
+                          )),
                           value: e,
                         );
                       }).toList()
@@ -116,8 +120,8 @@ class _ScreenDetectState extends State<ScreenDetect> {
                   });
                 }),
             SizedBox(
-                height: 300,
-                width: 400,
+                height: 350,
+                width: 600,
                 child: controller == null
                     ? const Center(child: Text("Loading Camera..."))
                     : !controller!.value.isInitialized
