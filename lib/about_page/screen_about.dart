@@ -90,7 +90,7 @@ class _ScreenAboutState extends State<ScreenAbout> {
 
   Card _buildCard(String imageUrl, String name, String git, String linkedin) {
     return Card(
-      elevation: 15,
+      elevation: 1,
       shadowColor: Colors.white,
         child: Container(
           width: MediaQuery.of(context).size.width * 0.12,

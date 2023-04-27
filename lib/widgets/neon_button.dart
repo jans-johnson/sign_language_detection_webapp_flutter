@@ -51,76 +51,79 @@ class _NeonButtonState extends State<NeonButton> with TickerProviderStateMixin {
         });
         _controller.reverse();
       },
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Container(
-            width: 200,
-            height: 60,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              border: Border.all(
-                color: Colors.blue,
-                width: 2,
+      child: GestureDetector(
+        onTap: widget.onPressed,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              width: 200,
+              height: 60,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(
+                  color: Colors.blue,
+                  width: 2,
+                ),
+                color: _hovering ? Colors.blue : Colors.transparent,
+                boxShadow: _hovering
+                    ? [
+                        BoxShadow(
+                          color: Colors.blue.withOpacity(0.6),
+                          blurRadius: 20,
+                          spreadRadius: -10,
+                          offset: Offset(0, 10),
+                        ),
+                        BoxShadow(
+                          color: Colors.blue.withOpacity(0.2),
+                          blurRadius: 20,
+                          spreadRadius: -10,
+                          offset: Offset(0, 10),
+                        ),
+                      ]
+                    : null,
               ),
-              color: _hovering ? Colors.blue : Colors.transparent,
-              boxShadow: _hovering
-                  ? [
-                      BoxShadow(
-                        color: Colors.blue.withOpacity(0.6),
-                        blurRadius: 20,
-                        spreadRadius: -10,
-                        offset: Offset(0, 10),
-                      ),
-                      BoxShadow(
-                        color: Colors.blue.withOpacity(0.2),
-                        blurRadius: 20,
-                        spreadRadius: -10,
-                        offset: Offset(0, 10),
-                      ),
-                    ]
-                  : null,
-            ),
-            child: Center(
-              child: Text(
-                widget.label,
-                style: TextStyle(
-                  color: _hovering ? Colors.black : Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  letterSpacing: 2,
+              child: Center(
+                child: Text(
+                  widget.label,
+                  style: TextStyle(
+                    color: _hovering ? Colors.black : Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    letterSpacing: 2,
+                  ),
                 ),
               ),
             ),
-          ),
-          Positioned.fill(
-            child: AnimatedBuilder(
-              animation: _animation,
-              builder: (context, child) {
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    border: Border.all(
-                      color: Colors.blue.withOpacity(0.4),
-                      width: 4,
+            Positioned.fill(
+              child: AnimatedBuilder(
+                animation: _animation,
+                builder: (context, child) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                        color: Colors.blue.withOpacity(0.4),
+                        width: 4,
+                      ),
+                      boxShadow: _hovering
+                          ? [
+                              BoxShadow(
+                                color: Colors.blue.withOpacity(0.4),
+                                blurRadius: 20,
+                                spreadRadius: -10,
+                                offset: Offset(0, 10),
+                              ),
+                            ]
+                          : null,
+                      color: _animation.value,
                     ),
-                    boxShadow: _hovering
-                        ? [
-                            BoxShadow(
-                              color: Colors.blue.withOpacity(0.4),
-                              blurRadius: 20,
-                              spreadRadius: -10,
-                              offset: Offset(0, 10),
-                            ),
-                          ]
-                        : null,
-                    color: _animation.value,
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
