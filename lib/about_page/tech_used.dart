@@ -41,7 +41,7 @@ class TechnologyUsed extends StatelessWidget {
                         fontSize: MediaQuery.of(context).textScaleFactor * 12)),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
+                height: MediaQuery.of(context).size.height * 0.1,
               ),
             ],
           ),
@@ -57,7 +57,7 @@ class TechnologyUsed extends StatelessWidget {
               fontSize: MediaQuery.of(context).textScaleFactor * 25),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.02,
+          height: MediaQuery.of(context).size.height * 0.04,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -17,73 +17,77 @@ class _ScreenAboutState extends State<ScreenAbout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Center(
-            child: Column(children: [
-              WebAppBar(),
-              Text(
-                "About",
-                style: TextStyle(
-                    color: ThemeConfig.lightPrimary,
-                    fontSize: MediaQuery.of(context).textScaleFactor * 60),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.7,
-                child: Text(
-                  Constants.about,
-                  overflow: TextOverflow.clip,
+      body: SingleChildScrollView(
+        child: Center(
+              child: Column(children: [
+                WebAppBar(),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.02,
+                ),
+                Text(
+                  "About",
                   style: TextStyle(
                       color: ThemeConfig.lightPrimary,
-                      fontSize: MediaQuery.of(context).textScaleFactor * 15,
-                      height: MediaQuery.of(context).textScaleFactor * 1.5,
-                      wordSpacing: MediaQuery.of(context).textScaleFactor * 2),
+                      fontSize: MediaQuery.of(context).textScaleFactor * 60),
                 ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
-              ),
-              TechnologyUsed(),
-              Text(
-                "Meet the Team",
-                style: TextStyle(
-                    color: ThemeConfig.lightPrimary,
-                    fontSize: MediaQuery.of(context).textScaleFactor * 50),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildCard(
-                      'https://avatars.githubusercontent.com/u/62547901?v=4',
-                      'Jans Johnson',
-                      'https://github.com/jans-johnson',
-                      'https://www.linkedin.com/in/jans-johnson/'),
-                  _buildCard(
-                      'https://avatars.githubusercontent.com/u/69690573?v=4',
-                      'Jisha Joseph',
-                      'https://github.com/jamiebit',
-                      'https://www.linkedin.com/in/jisha-joseph-arp/'),
-                  _buildCard(
-                      'https://avatars.githubusercontent.com/u/69074049?v=4',
-                      'Maris Reji',
-                      'https://github.com/marisreji',
-                      'https://www.linkedin.com/in/maris-reji-17262b225/'),
-                  _buildCard(
-                      'https://avatars.githubusercontent.com/u/84610299?v=4',
-                      'Megha George',
-                      'https://github.com/meghaeg77',
-                      'https://www.linkedin.com/in/megha-george-453a76200/')
-                ],
-              ),
-            ]),
-          ),
-        ],
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.04,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  child: Text(
+                    Constants.about,
+                    overflow: TextOverflow.clip,
+                    style: TextStyle(
+                        color: ThemeConfig.lightPrimary,
+                        fontSize: MediaQuery.of(context).textScaleFactor * 15,
+                        height: MediaQuery.of(context).textScaleFactor * 1.5,
+                        wordSpacing: MediaQuery.of(context).textScaleFactor * 2),
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                ),
+                TechnologyUsed(),
+                Text(
+                  "Meet the Team",
+                  style: TextStyle(
+                      color: ThemeConfig.lightPrimary,
+                      fontSize: MediaQuery.of(context).textScaleFactor * 25),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.08,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildCard(
+                        'https://avatars.githubusercontent.com/u/62547901?v=4',
+                        'Jans Johnson',
+                        'https://github.com/jans-johnson',
+                        'https://www.linkedin.com/in/jans-johnson/'),
+                    _buildCard(
+                        'https://avatars.githubusercontent.com/u/69690573?v=4',
+                        'Jisha Joseph',
+                        'https://github.com/jamiebit',
+                        'https://www.linkedin.com/in/jisha-joseph-arp/'),
+                    _buildCard(
+                        'https://avatars.githubusercontent.com/u/69074049?v=4',
+                        'Maris Reji',
+                        'https://github.com/marisreji',
+                        'https://www.linkedin.com/in/maris-reji-17262b225/'),
+                    _buildCard(
+                        'https://avatars.githubusercontent.com/u/84610299?v=4',
+                        'Megha George',
+                        'https://github.com/meghaeg77',
+                        'https://www.linkedin.com/in/megha-george-453a76200/')
+                  ],
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.08,
+                )
+              ]),
+            ),
       ),
     );
   }
