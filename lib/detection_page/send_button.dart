@@ -4,6 +4,8 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 import 'dart:convert';
 import 'dart:html';
 
+import 'package:sign_language_detection_webapp_flutter/detection_page/show_popup.dart';
+
 class SendButton extends StatefulWidget {
   SendButton({super.key, required this.controller});
 
@@ -51,6 +53,9 @@ class _SendButtonState extends State<SendButton> {
     request.onLoadEnd.listen((event) {
       if (request.status == 200) {
         print(request.response);
+        if (request.response.toString().contains("detected")) {
+          showCustomPopup(context, request.response);
+        }
       } else {
         print('Failed to send image.');
       }
