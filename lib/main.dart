@@ -16,6 +16,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeConfig.darkTheme,
       debugShowCheckedModeBanner: false,
       routes: {
+        'ScreenHome' : (context) {
+          return ScreenHome();
+        },
         'ScreenDetect': (ctx) {
           return ScreenDetect();
         },

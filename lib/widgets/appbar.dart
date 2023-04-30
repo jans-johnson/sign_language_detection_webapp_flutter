@@ -14,15 +14,17 @@ class WebAppBar extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(left: 50.0, top: 20),
-            child: 
-            Text(
-              "SignScribe",
-              style: TextStyle(
-                  //fontFamily: GoogleFonts.sigmarOne().fontFamily,
-                  fontSize: MediaQuery.of(context).textScaleFactor * 40,
-                  fontWeight: FontWeight.bold,
-                  color: ThemeConfig.lightAccent),
-                  
+            child: GestureDetector(
+              onTap: () => Navigator.of(context)
+                  .pushNamedAndRemoveUntil("ScreenHome", (route) => false),
+              child: Text(
+                "SignScribe",
+                style: TextStyle(
+                    //fontFamily: GoogleFonts.sigmarOne().fontFamily,
+                    fontSize: MediaQuery.of(context).textScaleFactor * 40,
+                    fontWeight: FontWeight.bold,
+                    color: ThemeConfig.lightAccent),
+              ),
             ),
           ),
         ),

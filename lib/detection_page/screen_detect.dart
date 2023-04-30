@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:sign_language_detection_webapp_flutter/theme/theme_config.dart';
+import 'package:sign_language_detection_webapp_flutter/widgets/appbar.dart';
 
 import '../utils/consts.dart';
 
@@ -100,6 +101,7 @@ class _ScreenDetectState extends State<ScreenDetect> {
       body: Center(
         child: Column(
           children: [
+            WebAppBar(),
             DropdownButton(
                 value: controller?.description,
                 hint: Text("Select Camera"),
