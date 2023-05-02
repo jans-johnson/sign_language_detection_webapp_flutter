@@ -14,20 +14,23 @@ class ScreenDetect extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            WebAppBar(),
+            const WebAppBar(),
             SizedBox(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Text(
-            Constants.instructions,
-            overflow: TextOverflow.clip,
-            style: TextStyle(
-                color: ThemeConfig.lightPrimary,
-                fontSize: MediaQuery.of(context).textScaleFactor * 15,
-                height: MediaQuery.of(context).textScaleFactor * 1.5,
-                wordSpacing: MediaQuery.of(context).textScaleFactor * 2),
-          ),
-        ),
-            ShowCamera(),
+              height: MediaQuery.of(context).size.height * 0.02,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                Constants.instructions,
+                overflow: TextOverflow.clip,
+                style: TextStyle(
+                    color: ThemeConfig.lightPrimary,
+                    fontSize: MediaQuery.of(context).textScaleFactor * 15,
+                    height: MediaQuery.of(context).textScaleFactor * 1.5,
+                    wordSpacing: MediaQuery.of(context).textScaleFactor * 2),
+              ),
+            ),
+            const ShowCamera(),
           ],
         ),
       ),

@@ -37,7 +37,7 @@ class _SendButtonState extends State<SendButton> {
         }
       }
     } catch (e) {
-      print(e); //show error
+      //show error
     }
   }
 
@@ -52,12 +52,11 @@ class _SendButtonState extends State<SendButton> {
 
     request.onLoadEnd.listen((event) {
       if (request.status == 200) {
-        print(request.response);
         if (request.response.toString().contains("detected")) {
           showCustomPopup(context, request.response);
         }
       } else {
-        print('Failed to send image.');
+        //handle the error
       }
     });
 
@@ -74,8 +73,8 @@ class _SendButtonState extends State<SendButton> {
       children: [
         ElevatedButton.icon(
           onPressed: captureImage,
-          icon: Icon(Icons.camera),
-          label: Text("Capture"),
+          icon: const Icon(Icons.camera),
+          label: const Text("Capture"),
         ),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.02,

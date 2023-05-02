@@ -20,7 +20,7 @@ class _ScreenAboutState extends State<ScreenAbout> {
       body: SingleChildScrollView(
         child: Center(
               child: Column(children: [
-                WebAppBar(),
+                const WebAppBar(),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
@@ -48,7 +48,7 @@ class _ScreenAboutState extends State<ScreenAbout> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.1,
                 ),
-                TechnologyUsed(),
+                const TechnologyUsed(),
                 Text(
                   "Meet the Team",
                   style: TextStyle(
@@ -98,7 +98,7 @@ class _ScreenAboutState extends State<ScreenAbout> {
       shadowColor: Colors.white,
         child: Container(
           width: MediaQuery.of(context).size.width * 0.12,
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           color: ThemeConfig.darkPrimary,
           child: Column(
             children: [
@@ -137,7 +137,7 @@ class _ScreenAboutState extends State<ScreenAbout> {
                       onPressed: () {
                         js.context.callMethod('open', [linkedin]);
                       },
-                      icon: Icon(SimpleIcons.linkedin,
+                      icon: const Icon(SimpleIcons.linkedin,
                       color: Colors.white))
                 ],
               )

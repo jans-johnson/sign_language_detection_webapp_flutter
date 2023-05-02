@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'send_button.dart';
 
 class ShowCamera extends StatefulWidget {
-  ShowCamera({super.key});
+  const ShowCamera({super.key});
 
   @override
   State<ShowCamera> createState() => _ShowCameraState();
@@ -42,15 +42,15 @@ class _ShowCameraState extends State<ShowCamera> {
       children: [
         DropdownButton(
             value: controller?.description,
-            hint: Text("Select Camera"),
+            hint: const Text("Select Camera"),
             items: cameras != null
                 ? cameras!.map((e) {
                     return DropdownMenuItem(
+                      value: e,
                       child: Text(e.name,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Color.fromARGB(255, 75, 75, 75),
                           )),
-                      value: e,
                     );
                   }).toList()
                 : List.empty(),
@@ -72,7 +72,7 @@ class _ShowCameraState extends State<ShowCamera> {
             child: controller == null
                 ? const Center(child: Text("Loading Camera..."))
                 : !controller!.value.isInitialized
-                    ? Center(
+                    ? const Center(
                         child: CircularProgressIndicator(),
                       )
                     : CameraPreview(controller!)),

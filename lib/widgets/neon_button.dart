@@ -4,13 +4,13 @@ class NeonButton extends StatefulWidget {
   final String label;
   final VoidCallback onPressed;
 
-  NeonButton({required this.label, required this.onPressed});
+  const NeonButton({super.key, required this.label, required this.onPressed});
 
   @override
-  _NeonButtonState createState() => _NeonButtonState();
+  NeonButtonState createState() => NeonButtonState();
 }
 
-class _NeonButtonState extends State<NeonButton> with TickerProviderStateMixin {
+class NeonButtonState extends State<NeonButton> with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Color?> _animation;
 
@@ -21,7 +21,7 @@ class _NeonButtonState extends State<NeonButton> with TickerProviderStateMixin {
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 1000),
     )..repeat(reverse: true);
 
     _animation = ColorTween(
@@ -72,13 +72,13 @@ class _NeonButtonState extends State<NeonButton> with TickerProviderStateMixin {
                           color: Colors.blue.withOpacity(0.6),
                           blurRadius: 20,
                           spreadRadius: -10,
-                          offset: Offset(0, 10),
+                          offset: const Offset(0, 10),
                         ),
                         BoxShadow(
                           color: Colors.blue.withOpacity(0.2),
                           blurRadius: 20,
                           spreadRadius: -10,
-                          offset: Offset(0, 10),
+                          offset: const Offset(0, 10),
                         ),
                       ]
                     : null,
@@ -112,7 +112,7 @@ class _NeonButtonState extends State<NeonButton> with TickerProviderStateMixin {
                                 color: Colors.blue.withOpacity(0.4),
                                 blurRadius: 20,
                                 spreadRadius: -10,
-                                offset: Offset(0, 10),
+                                offset: const Offset(0, 10),
                               ),
                             ]
                           : null,

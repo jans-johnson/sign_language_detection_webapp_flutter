@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'dart:js' as js;
 import 'package:sign_language_detection_webapp_flutter/theme/theme_config.dart';
 import 'package:sign_language_detection_webapp_flutter/widgets/neon_hover_text.dart';
 
 class WebAppBar extends StatelessWidget {
-  int _hoverIndex = -1;
+  const WebAppBar({super.key});
+
 
   @override
   Widget build(BuildContext context) {

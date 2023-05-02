@@ -6,7 +6,7 @@ class NeonHoverText extends StatefulWidget {
   final double fontSize;
   final FontWeight fontWeight;
 
-  NeonHoverText({
+  const NeonHoverText({super.key, 
     required this.text,
     required this.onPressed,
     this.fontSize = 18,
@@ -14,10 +14,10 @@ class NeonHoverText extends StatefulWidget {
   });
 
   @override
-  _NeonHoverTextState createState() => _NeonHoverTextState();
+  NeonHoverTextState createState() => NeonHoverTextState();
 }
 
-class _NeonHoverTextState extends State<NeonHoverText> {
+class NeonHoverTextState extends State<NeonHoverText> {
   bool _hovering = false;
 
   @override
@@ -30,23 +30,23 @@ class _NeonHoverTextState extends State<NeonHoverText> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(
           border: _hovering
-              ? Border(
+              ? const Border(
                   bottom: BorderSide(
                     width: 3,
                     color: Color(0xFF00FFFF),
                   ),
                 )
-              : Border(
+              : const Border(
                   bottom: BorderSide(
                     width: 3,
                     color: Colors.transparent,
                   ),
                 ),
         ),
-        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Text(
           widget.text,
           style: TextStyle(
@@ -56,12 +56,12 @@ class _NeonHoverTextState extends State<NeonHoverText> {
             decoration: TextDecoration.none,
             shadows: _hovering
                 ? [
-                    Shadow(
+                    const Shadow(
                       blurRadius: 10,
                       color: Color(0xFF00FFFF),
                       offset: Offset(0, 0),
                     ),
-                    Shadow(
+                    const Shadow(
                       blurRadius: 30,
                       color: Color(0xFF00FFFF),
                       offset: Offset(0, 0),

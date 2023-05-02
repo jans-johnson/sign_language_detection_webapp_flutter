@@ -5,25 +5,27 @@ import 'package:sign_language_detection_webapp_flutter/home_page/screen_home.dar
 import 'package:sign_language_detection_webapp_flutter/theme/theme_config.dart';
 
 Future<void> main() async {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ScreenHome(),
+      home: const ScreenHome(),
       theme: ThemeConfig.darkTheme,
       debugShowCheckedModeBanner: false,
       routes: {
         'ScreenHome' : (context) {
-          return ScreenHome();
+          return const ScreenHome();
         },
         'ScreenDetect': (ctx) {
-          return ScreenDetect();
+          return const ScreenDetect();
         },
         'ScreenAbout': (ctx) {
-          return ScreenAbout();
+          return const ScreenAbout();
         }
       },
     );

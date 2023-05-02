@@ -1,11 +1,10 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class TypingTextWidget extends StatelessWidget {
   final String text;
 
-  TypingTextWidget({required this.text});
+  const TypingTextWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +17,11 @@ class TypingTextWidget extends StatelessWidget {
             text,
             textStyle: TextStyle(
               fontSize: MediaQuery.of(context).textScaleFactor * 20,
-              color: Color.fromARGB(185, 255, 255, 255),
+              color: const Color.fromARGB(185, 255, 255, 255),
               letterSpacing: 1.0,
               height: 1.5,
             ),
-            speed: Duration(milliseconds: 100),
+            speed: const Duration(milliseconds: 100),
           ),
         ],
       ),

@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sign_language_detection_webapp_flutter/theme/theme_config.dart';
 import 'package:sign_language_detection_webapp_flutter/widgets/appbar.dart';
 import 'package:sign_language_detection_webapp_flutter/widgets/neon_button.dart';
 
@@ -45,7 +44,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                 height: MediaQuery.of(context).size.height * 0.95,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
@@ -53,14 +52,14 @@ class _ScreenHomeState extends State<ScreenHome> {
                           Color.fromARGB(133, 0, 188, 221),
                         ])),
                 child: Column(children: [
-                  WebAppBar(),
+                  const WebAppBar(),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.05,
                   ),
                   Expanded(
                     child: Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: MediaQuery.of(context).size.width * 0.3,
                           child: Padding(
                             padding: EdgeInsets.only(
@@ -98,17 +97,15 @@ class _ScreenHomeState extends State<ScreenHome> {
                                     flex: 3,
                                     child: TypingTextWidget(
                                         text: Constants.main_page_desc)),
-                                Spacer(),
+                                const Spacer(),
                               ],
                             ),
                           ),
                         ),
                         Expanded(
-                          child: Container(
-                            child: SvgPicture.asset(
-                              "assets/home.svg",
-                              width: MediaQuery.of(context).size.width * 0.50,
-                            ),
+                          child: SvgPicture.asset(
+                            "assets/home.svg",
+                            width: MediaQuery.of(context).size.width * 0.50,
                           ),
                         )
                       ],

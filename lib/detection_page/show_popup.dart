@@ -23,7 +23,7 @@ void showCustomPopup(BuildContext context, String message) {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text(
+            child: const Text(
               'OK',
               style: TextStyle(
                 color: Colors.white,

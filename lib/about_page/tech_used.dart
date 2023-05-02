@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:sign_language_detection_webapp_flutter/theme/theme_config.dart';
 import 'dart:js' as js;
-import 'package:simple_icons/simple_icons.dart';
 
 class TechnologyUsed extends StatelessWidget {
   const TechnologyUsed({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Container _buildContainer(String imageUrl, String name, String description) {
+    Container buildContainer(String imageUrl, String name, String description) {
       return Container(
           width: MediaQuery.of(context).size.width * 0.2,
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           color: Colors.transparent,
           child: Column(
             children: [
@@ -62,15 +61,15 @@ class TechnologyUsed extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _buildContainer(
+            buildContainer(
                 'assets/flutter.png',
                 'Flutter',
                 'Frontend Development'),
-            _buildContainer(
+            buildContainer(
                 'assets/mediapipe.png',
                 'MediaPipe',
                 'Skeletal-point Detection'),
-            _buildContainer(
+            buildContainer(
                 'assets/python.png',
                 'Python',
                 'Backend Development',),
