@@ -67,8 +67,8 @@ class _ShowCameraState extends State<ShowCamera> {
               });
             }),
         SizedBox(
-            height: 350,
-            width: 600,
+            height: 400,
+            width: 650,
             child: controller == null
                 ? const Center(child: Text("Loading Camera..."))
                 : !controller!.value.isInitialized
