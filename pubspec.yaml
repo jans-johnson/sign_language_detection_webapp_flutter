@@ -46,6 +46,7 @@ dependencies:
   url_launcher: ^6.1.10
   simple_icons: ^7.10.0
   flutter_animation_progress_bar: ^2.3.1
+  cross_file_image: ^1.0.0
 
 dev_dependencies:
   flutter_test:

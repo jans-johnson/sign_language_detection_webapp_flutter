@@ -105,6 +105,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.3+4"
+  cross_file_image:
+    dependency: "direct main"
+    description:
+      name: cross_file_image
+      sha256: "542c86a70fb48e54009e79e840126a24e7a223c96f15ff785f5289cec3e14a77"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   crypto:
     dependency: transitive
     description:
