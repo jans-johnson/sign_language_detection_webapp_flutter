@@ -1,8 +1,8 @@
+import 'dart:convert';
+import 'dart:html' as html;
 import 'dart:io';
-
 import 'package:cross_file_image/cross_file_image.dart';
 import 'package:flutter/material.dart';
-
 import '../theme/theme_config.dart';
 import '../utils/consts.dart';
 import 'detection_utils.dart';
@@ -23,12 +23,28 @@ class _PreviewCameraState extends State<PreviewCamera> {
       while (isChecked == true) {
         await DetectionFunction.instance.controller!
             .takePicture()
-            .then((value) {
+            .then((value) async {
+          final bytes = await value.readAsBytes();
+          final base64Image = base64Encode(bytes);
+          final request = html.HttpRequest();
+          request.open('POST', 'http://127.0.0.1:5000/detect');
+          request.setRequestHeader(
+              'Content-Type', 'application/json;charset=utf-8');
+
+          request.onLoadEnd.listen((event) {
+      if (request.status == 200) {
           setState(() {
-            DetectionFunction.instance.image = value;
+            DetectionFunction.instance.image = request.response.toString();
           });
+      } else {
+        //handle the error
+      }
+    });
+          request.send(jsonEncode({
+            'image': base64Image,
+          }));
         });
-        await Future.delayed(const Duration(milliseconds: 200));
+        await Future.delayed(const Duration(milliseconds: 100));
       }
     }
 
@@ -44,7 +60,7 @@ class _PreviewCameraState extends State<PreviewCamera> {
               wordSpacing: MediaQuery.of(context).textScaleFactor * 2),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height*0.02,
+          height: MediaQuery.of(context).size.height * 0.02,
         ),
         Row(
           children: [
@@ -56,18 +72,19 @@ class _PreviewCameraState extends State<PreviewCamera> {
                   });
                   setImage();
                 }),
-                Text("   Show Mediapipe Preview",style: TextStyle(
-                  color: ThemeConfig.lightPrimary
-                ),)
+            Text(
+              "   Show Mediapipe Preview",
+              style: TextStyle(color: ThemeConfig.lightPrimary),
+            )
           ],
         ),
         SizedBox(
-          height: 200,
-          width: 350,
+          height: 300,
+          width: 500,
           child: Center(
             child: DetectionFunction.instance.image == null
                 ? CircularProgressIndicator()
-                : Image(image: XFileImage(DetectionFunction.instance.image!)),
+                : Image.memory(base64Decode(DetectionFunction.instance.image!)),
           ),
         ),
       ],

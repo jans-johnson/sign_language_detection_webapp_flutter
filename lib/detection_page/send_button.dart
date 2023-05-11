@@ -1,9 +1,10 @@
+import 'dart:html';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:sign_language_detection_webapp_flutter/detection_page/detection_utils.dart';
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:sign_language_detection_webapp_flutter/detection_page/show_popup.dart';
 

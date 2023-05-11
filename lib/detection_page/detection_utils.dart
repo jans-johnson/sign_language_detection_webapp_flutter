@@ -10,5 +10,5 @@ class DetectionFunction {
 
   List<CameraDescription>? cameras;
   CameraController? controller;
-  XFile? image=null;
+  String? image=null;
 }
