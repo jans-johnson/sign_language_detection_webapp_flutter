@@ -10,5 +10,5 @@ accurately defined using MediaPipe. The application supports real-time translati
 which high accuracy. The interface is created using Flutter.'''
           .replaceAll("\n", "");
   static String instructions = '''Make Sure that you are in a well-lit room and the hands are completely visible in the frame. 
-Click the button below to start capturing 30 frames.'''.replaceAll("\n", "");
+Click the Capture button below to start capturing 30 frames.'''.replaceAll("\n", "");
 }
