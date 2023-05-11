@@ -16,8 +16,6 @@ class PreviewCamera extends StatefulWidget {
 
 class _PreviewCameraState extends State<PreviewCamera> {
   bool isChecked = false;
-  @override
-  void initState() {}
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +43,9 @@ class _PreviewCameraState extends State<PreviewCamera> {
               height: MediaQuery.of(context).textScaleFactor * 1.5,
               wordSpacing: MediaQuery.of(context).textScaleFactor * 2),
         ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height*0.02,
+        ),
         Row(
           children: [
             Checkbox(
@@ -54,7 +55,10 @@ class _PreviewCameraState extends State<PreviewCamera> {
                     isChecked = val!;
                   });
                   setImage();
-                })
+                }),
+                Text("   Show Mediapipe Preview",style: TextStyle(
+                  color: ThemeConfig.lightPrimary
+                ),)
           ],
         ),
         SizedBox(
