@@ -3,8 +3,19 @@ import 'package:flutter/material.dart';
 import '../theme/theme_config.dart';
 import '../utils/consts.dart';
 
-class PreviewCamera extends StatelessWidget {
+class PreviewCamera extends StatefulWidget {
   const PreviewCamera({super.key});
+
+  @override
+  State<PreviewCamera> createState() => _PreviewCameraState();
+}
+
+class _PreviewCameraState extends State<PreviewCamera> {
+
+  @override
+  void initState(){
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +31,12 @@ class PreviewCamera extends StatelessWidget {
               wordSpacing: MediaQuery.of(context).textScaleFactor * 2),
         ),
         SizedBox(
-            height: 200,
-            width: 350,
-            child: const Center(
-                        child: CircularProgressIndicator(),
-                      ))
+          height: 200,
+          width: 350,
+          child: const Center(
+            child: CircularProgressIndicator(),
+          ),
+        ),
       ],
     );
   }

@@ -1,15 +1,14 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
+import 'package:sign_language_detection_webapp_flutter/detection_page/detection_utils.dart';
 import 'dart:convert';
 import 'dart:html';
 
 import 'package:sign_language_detection_webapp_flutter/detection_page/show_popup.dart';
 
 class SendButton extends StatefulWidget {
-  SendButton({super.key, required this.controller});
-
-  CameraController? controller;
+  SendButton({super.key});
 
   @override
   State<SendButton> createState() => _SendButtonState();
@@ -17,17 +16,15 @@ class SendButton extends StatefulWidget {
 
 class _SendButtonState extends State<SendButton> {
   double _current = 0.0;
-  XFile? image;
 
   Future<void> captureImage() async {
     try {
       _current = 0.0;
-      if (widget.controller != null) {
-        if (widget.controller!.value.isInitialized) {
+      if (DetectionFunction.instance.controller != null) {
+        if (DetectionFunction.instance.controller!.value.isInitialized) {
           for (int i = 0; i < 30; i++) {
-            await widget.controller!.takePicture().then((value) {
+            await DetectionFunction.instance.controller!.takePicture().then((value) {
               sendPicture(value);
-              image = value;
               setState(() {
                 _current++;
               });
