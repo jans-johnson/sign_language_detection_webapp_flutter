@@ -3,8 +3,10 @@ import 'dart:html' as html;
 import 'dart:io';
 import 'package:cross_file_image/cross_file_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../theme/theme_config.dart';
 import '../utils/consts.dart';
+import 'SharedState.dart';
 import 'detection_utils.dart';
 
 class PreviewCamera extends StatefulWidget {
@@ -19,6 +21,8 @@ class _PreviewCameraState extends State<PreviewCamera> {
 
   @override
   Widget build(BuildContext context) {
+
+    var sharedState = Provider.of<SharedState>(context);
     Future<void> setImage() async {
       while (isChecked == true) {
         await DetectionFunction.instance.controller!
@@ -34,7 +38,7 @@ class _PreviewCameraState extends State<PreviewCamera> {
           request.onLoadEnd.listen((event) {
       if (request.status == 200) {
           setState(() {
-            DetectionFunction.instance.image = request.response.toString();
+            sharedState.updateImage(request.response.toString());
           });
       } else {
         //handle the error
@@ -82,9 +86,9 @@ class _PreviewCameraState extends State<PreviewCamera> {
           height: 300,
           width: 500,
           child: Center(
-            child: DetectionFunction.instance.image == null
+            child: sharedState.image == null
                 ? CircularProgressIndicator()
-                : Image.memory(base64Decode(DetectionFunction.instance.image!)),
+                : Image.memory(base64Decode(sharedState.image!)),
           ),
         ),
       ],

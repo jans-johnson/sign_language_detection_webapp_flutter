@@ -3,39 +3,43 @@ import 'package:sign_language_detection_webapp_flutter/detection_page/preview_ca
 import 'package:sign_language_detection_webapp_flutter/detection_page/show_camera.dart';
 import 'package:sign_language_detection_webapp_flutter/theme/theme_config.dart';
 import 'package:sign_language_detection_webapp_flutter/widgets/appbar.dart';
-
+import 'package:provider/provider.dart';
 import '../utils/consts.dart';
+import 'SharedState.dart';
 
 class ScreenDetect extends StatelessWidget {
   const ScreenDetect({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ThemeConfig.darkPrimary,
-      body: Column(
-        children: [
-          const WebAppBar(),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: const ShowCamera(),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      fit: FlexFit.loose,
+    return ChangeNotifierProvider(
+      create: (_) => SharedState(),
+      child: Scaffold(
+        backgroundColor: ThemeConfig.darkPrimary,
+        body: Column(
+          children: [
+            const WebAppBar(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: const ShowCamera(),
+                      ),
+                      Flexible(
+                        flex: 1,
+                        fit: FlexFit.loose,
                         child: PreviewCamera(),
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
