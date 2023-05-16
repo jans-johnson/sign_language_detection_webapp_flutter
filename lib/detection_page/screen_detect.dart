@@ -21,11 +21,12 @@ class ScreenDetect extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
+                  padding:const EdgeInsets.only(right: 50.0, left:8.0, top: 8.0, bottom: 8.0),
+                  child: Row( 
                     children: [
                       Flexible(
-                        flex: 1,
+                        flex: 2,
+                        fit: FlexFit.tight,
                         child: const ShowCamera(),
                       ),
                       Flexible(
