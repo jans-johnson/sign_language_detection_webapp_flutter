@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:sign_language_detection_webapp_flutter/detection_page/detection_utils.dart';
 import 'dart:convert';
 
+import 'package:sign_language_detection_webapp_flutter/widgets/neon_button.dart';
 import 'package:sign_language_detection_webapp_flutter/detection_page/show_popup.dart';
 
 import 'SharedState.dart';
@@ -79,10 +80,12 @@ class _SendButtonState extends State<SendButton> {
     var sharedState = Provider.of<SharedState>(context);
     return Column(
       children: [
-        ElevatedButton.icon(
-          onPressed: () => captureImage(sharedState),
-          icon: const Icon(Icons.camera),
-          label: const Text("Capture"),
+        SizedBox(
+        width: 200,
+        height: 50,
+        child: NeonButton(
+          label: "Capture",
+          onPressed: () => captureImage(sharedState))
         ),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.02,

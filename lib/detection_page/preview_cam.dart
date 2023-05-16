@@ -83,8 +83,8 @@ class _PreviewCameraState extends State<PreviewCamera> {
           ],
         ),
         SizedBox(
-          height: 300,
-          width: 500,
+          height:300,
+          width: 400,
           child: Center(
             child: sharedState.image == null
                 ? CircularProgressIndicator()

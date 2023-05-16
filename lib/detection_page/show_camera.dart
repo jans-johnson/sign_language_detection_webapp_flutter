@@ -49,7 +49,7 @@ class _ShowCameraState extends State<ShowCamera> {
                       value: e,
                       child: Text(e.name,
                           style: const TextStyle(
-                            color: Color.fromARGB(255, 75, 75, 75),
+                            color: Color.fromARGB(255, 207, 206, 206),
                           )),
                     );
                   }).toList()
@@ -67,8 +67,8 @@ class _ShowCameraState extends State<ShowCamera> {
               });
             }),
         SizedBox(
-            height: 400,
-            width: 650,
+            height: 450,
+            width: 700,
             child: DetectionFunction.instance.controller == null
                 ? const Center(child: Text("Loading Camera..."))
                 : !DetectionFunction.instance.controller!.value.isInitialized
