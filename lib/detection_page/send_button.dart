@@ -36,7 +36,7 @@ class _SendButtonState extends State<SendButton> {
                 _current++;
               });
             });
-            await Future.delayed(const Duration(milliseconds: 10));
+            await Future.delayed(const Duration(milliseconds: 01));
           }
         }
       }

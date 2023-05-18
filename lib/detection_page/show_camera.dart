@@ -26,7 +26,7 @@ class _ShowCameraState extends State<ShowCamera> {
       });
     });
     if (DetectionFunction.instance.cameras != null) {
-      DetectionFunction.instance.controller = CameraController(DetectionFunction.instance.cameras![0], ResolutionPreset.max);
+      DetectionFunction.instance.controller = CameraController(DetectionFunction.instance.cameras![1], ResolutionPreset.max);
       DetectionFunction.instance.controller!.initialize().then((_) {
         if (!mounted) {
           return;
