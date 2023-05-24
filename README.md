@@ -4,6 +4,8 @@ This is the code for the Front-end Web application done using flutter for a Indi
 
 > Link to Backend Flask Code [Backend Flask API](https://github.com/jans-johnson/sign-language-detection-webapp-api-python-flask)
 
+> Link to Ml Project Files : [Sign Language Detection using Skeletal point Action Recognition](https://github.com/jamiebit/Sign-Language-Detection-using-Skeletal-Point-Action-Recognition)
+
 ## Packages used
 
 ``` yaml
